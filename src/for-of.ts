@@ -1,3 +1,5 @@
+// for-of should only be used for arrays and strings. If used with objects, the results may be unexpected.
+
 let foor = [1,2,3,4,5];
 for (let item in foor) {
     console.log(item);
