@@ -1,48 +1,71 @@
-interface Iterator<T> {
-    next(value?: any): IteratorResult<T>
-}
-
-interface IteratorResult<T> {
-    done: boolean,
-    value?: T
-}
-
 class Component {
-    constructor(public name:string){}
+    constructor(public name: string) { }
 }
 
-class Frame implements Iterator<Component> {
-
+class Frame implements IterableIterator<Component> {
+    
     private pointer: number = 0;
+    constructor(public name: string, public components: Component[]) { }
 
-    constructor(public name: string, public components: Component[]) {}
+    [Symbol.iterator](): IterableIterator<Component> {
+        return this;
+    }
 
-    public next(): IteratorResult<Component> {
-        if (this.pointer < this.components.length) {
+    next(value?: any): IteratorResult<Component> {
+        if (this.pointer < components.length) {
             return {
                 done: false,
-                value: this.components[this.pointer++];
-            }
+                value: components[this.pointer++]
+            };
         } else {
             return {
-                done: true
+                done: true,
+                value: null
+            };
+        }
+    }
+}
+
+
+let components = [new Component("left"), new Component("right"), new Component("top"), new Component("bottom")];
+let frame = new Frame("door", components);
+
+for (let component of frame) {
+    console.log(component);
+}
+
+
+class Fibonacci implements IterableIterator<number> {
+    
+    private fnumber1 = 0;
+    private fnumber2 = 1;
+
+    constructor(public maxValue:number){}
+    
+    [Symbol.iterator](): IterableIterator<number> {
+        return this;
+    }
+
+    next(value?: any): IteratorResult<number> {
+        var temp = this.fnumber1;
+        this.fnumber1 = this.fnumber2;
+        this.fnumber2 = temp + this.fnumber1;
+
+        if (this.maxValue && temp <= this.maxValue) {
+            return {
+                done: false,
+                value: temp
+            };
+        } else {
+            return {
+                done: true,
+                value: null
             }
         }
     }
 }
 
-let components = [new Component("top"), new Component("bottom"), new Component("left"), new Component("right")];
-let frame = new Frame("door", components);
-
-let component1 = frame.next();
-console.log(component1);
-let component2 = frame.next();
-console.log(component2);
-let component3 = frame.next();
-console.log(component3);
-let component4 = frame.next();
-console.log(component4);
-let component5 = frame.next();
-console.log(component5);
-
-
+let fSeries = new Fibonacci(21);
+for (let val of fSeries) {
+    console.log(val);
+}
