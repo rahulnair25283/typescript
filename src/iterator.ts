@@ -1,8 +1,8 @@
-class Component {
+export class Component {
     constructor(public name: string) { }
 }
 
-class Frame implements IterableIterator<Component> {
+export class Frame implements IterableIterator<Component> {
     
     private pointer: number = 0;
     constructor(public name: string, public components: Component[]) { }

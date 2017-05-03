@@ -3,12 +3,12 @@ let x: number = 100;
 
 console.log(x);
 
-interface Point2D {
+export interface Point2D {
     x: number;
     y: number;
 }
 
-interface Point3D {
+export interface Point3D {
     x: number;
     y: number;
     z: number;

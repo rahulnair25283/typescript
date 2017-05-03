@@ -1,11 +1,11 @@
 import Point from './class';
-class Point3D extends Point {
+export class Point3D extends Point {
     constructor(x: number, y: number, private z: number) {
         super(x, y);
         this.z = z;
     }
 
-    add(point: Point3D) {
+    add(point: Point3D): Point3D {
         let point2D = super.add(point);
         return new Point3D(point2D.x, point2D.y, this.z + point.z);
     }

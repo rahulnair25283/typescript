@@ -1,4 +1,4 @@
-class Person {
+export class Person {
     constructor(private age:number) {}
     growOld() {
         this.age++;

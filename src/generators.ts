@@ -1,4 +1,4 @@
-function* idMaker() {
+export function* idMaker() {
     let index = 0;
     while (index < 3) {
         yield index++;
@@ -11,7 +11,7 @@ console.log(idGen.next());
 console.log(idGen.next());
 console.log(idGen.next());
 
-function* generator() {
+export function* generator() {
     console.log("execution started");
     yield 0;
     console.log("execution resumed after 0");
@@ -25,7 +25,7 @@ console.log(gen.next());
 console.log(gen.next());
 console.log(gen.next());
 
-function* generator2() {
+export function* generator2() {
     var bar = yield "foo";
     console.log(bar);
 }

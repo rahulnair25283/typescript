@@ -3,7 +3,7 @@ let html = `<div>${lyrics}</div>`
 
 console.log(html);
 
-const escapeHtml = (literals, ...placeholders) => {
+const escapeHtml = (literals: TemplateStringsArray, ...placeholders: Array<string>) => {
     let result = "";
     for (let i = 0; i < placeholders.length; i++) {
         result += literals[i];

@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
         "target": "es6", 
+        "module": "commonjs",
         "outDir": "jsScripts/",
-        "sourceMap": true
-    }    
+        "sourceMap": true,
+        "noImplicitAny": true
+    }   ,
+    "include": [
+        "src/**/*.ts"
+    ]
 }

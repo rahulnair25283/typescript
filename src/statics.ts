@@ -1,4 +1,4 @@
-class Something {
+export class Something {
     static value: number = 0;
     constructor() {
         Something.value++
